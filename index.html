@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FOMO - Coming Soon</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+      }
+      #banners-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+      .banner {
+        position: absolute;
+        background: red;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+        animation: flash 1s infinite alternate;
+      }
+      @keyframes flash {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+      #final-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="banners-container">
+      <div class="banner" onclick="spawnBanner(this)">
+        ¡Clica aquí si tienes problemas con el FOMO, te podemos ayudar!
+      </div>
+    </div>
+    <div id="final-screen">FOMO<br />1.05.2025</div>
+    <script>
+      let clickCount = 0;
+      const phrases = [
+        "¡Tienes FOMO? El Dr. Ramírez te ayuda sin compromiso!",
+        "Aquí te ayudamos con tu FOMO, total discreción!",
+        "El FOMO tiene solución! Aquí te ayudamos!",
+        "No sufras más con el FOMO, somos especialistas!",
+        "Tratamiento efectivo contra el FOMO!",
+        "No dejes que el FOMO controle tu vida, clínicas especializadas!",
+      ];
+
+      function spawnBanner(clickedBanner) {
+        clickCount++;
+        if (clickCount >= 10) {
+          document.getElementById("banners-container").style.display = "none";
+          document.getElementById("final-screen").style.display = "flex";
+          return;
+        }
+
+        const banner = document.createElement("div");
+        banner.className = "banner";
+        banner.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+        banner.style.top = Math.random() * 80 + "vh";
+        banner.style.left = Math.random() * 80 + "vw";
+        banner.onclick = function () {
+          spawnBanner(banner);
+        };
+
+        document.getElementById("banners-container").appendChild(banner);
+      }
+    </script>
+  </body>
+</html>
