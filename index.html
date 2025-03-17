@@ -27,8 +27,23 @@
         font-size: 1.2em;
         cursor: pointer;
         animation: flash 1s infinite alternate;
-        max-width: 80%;
         word-wrap: break-word;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .banner.wide {
+        width: 300px;
+        height: auto;
+        min-height: 40px;
+        white-space: normal;
+      }
+      .banner.tall {
+        width: 220px;
+        height: auto;
+        min-height: 60px;
+        white-space: normal;
       }
       @keyframes flash {
         0% {
@@ -70,9 +85,46 @@
         "No sufras más con el FOMO, somos especialistas!",
         "Tratamiento efectivo contra el FOMO!",
         "No dejes que el FOMO controle tu vida, clínicas especializadas!",
+        "¡ALERTA! ¡Tu FOMO está fuera de control!",
+        "¿Obsesionado con lo que te pierdes? Te entendemos...",
+        "¡NO ESPERES MÁS! El tratamiento para el FOMO es ahora o nunca!",
+        "¡Última oportunidad para curar tu FOMO! ¡No te quedes atrás!",
       ];
 
       let placedBanners = [];
+
+      function getRandomPosition(bannerWidth, bannerHeight) {
+        let maxWidth = window.innerWidth - bannerWidth;
+        let maxHeight = window.innerHeight - bannerHeight;
+        let left,
+          top,
+          isOverlapping,
+          attempts = 0;
+
+        do {
+          isOverlapping = false;
+          left = Math.random() * maxWidth;
+          top = Math.random() * maxHeight;
+
+          for (let banner of placedBanners) {
+            let topDiff = Math.abs(top - banner.top);
+            let leftDiff = Math.abs(left - banner.left);
+            if (topDiff < bannerHeight && leftDiff < bannerWidth) {
+              isOverlapping = true;
+              break;
+            }
+          }
+          attempts++;
+        } while (isOverlapping && attempts < 30);
+
+        placedBanners.push({
+          top,
+          left,
+          width: bannerWidth,
+          height: bannerHeight,
+        });
+        return { top, left };
+      }
 
       function spawnBanner(clickedBanner) {
         clickCount++;
@@ -82,49 +134,28 @@
           return;
         }
 
-        let newBanner;
-        let isOverlapping;
-        let attempts = 0;
-        let maxWidth =
-          window.innerWidth <= 768
-            ? window.innerWidth * 0.8
-            : window.innerWidth * 0.6;
-        let maxHeight = window.innerHeight * 0.8;
-
-        do {
-          isOverlapping = false;
-          newBanner = {
-            top: Math.random() * (maxHeight - 50) + "px",
-            left: Math.random() * (maxWidth - 200) + "px",
-          };
-
-          for (let banner of placedBanners) {
-            let topDiff = Math.abs(
-              parseFloat(newBanner.top) - parseFloat(banner.top)
-            );
-            let leftDiff = Math.abs(
-              parseFloat(newBanner.left) - parseFloat(banner.left)
-            );
-
-            if (topDiff < 50 && leftDiff < 100) {
-              isOverlapping = true;
-              break;
-            }
-          }
-          attempts++;
-        } while (isOverlapping && attempts < 30);
-
         const banner = document.createElement("div");
         banner.className = "banner";
         banner.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-        banner.style.top = newBanner.top;
-        banner.style.left = newBanner.left;
+
+        // Randomly assign a wide or tall banner style
+        if (Math.random() > 0.5) {
+          banner.classList.add("wide");
+        } else {
+          banner.classList.add("tall");
+        }
+
+        document.getElementById("banners-container").appendChild(banner);
+
+        let bannerWidth = banner.offsetWidth || 250;
+        let bannerHeight = banner.offsetHeight || 50;
+        let position = getRandomPosition(bannerWidth, bannerHeight);
+
+        banner.style.top = `${position.top}px`;
+        banner.style.left = `${position.left}px`;
         banner.onclick = function () {
           spawnBanner(banner);
         };
-
-        placedBanners.push(newBanner);
-        document.getElementById("banners-container").appendChild(banner);
       }
     </script>
   </body>
