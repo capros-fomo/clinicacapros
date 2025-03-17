@@ -33,7 +33,8 @@
           opacity: 1;
         }
         100% {
-          opacity: 0.5;
+          background: rgb(86, 9, 109);
+          opacity: 0.8;
         }
       }
       #final-screen {
@@ -69,6 +70,8 @@
         "No dejes que el FOMO controle tu vida, clínicas especializadas!",
       ];
 
+      let placedBanners = [];
+
       function spawnBanner(clickedBanner) {
         clickCount++;
         if (clickCount >= 10) {
@@ -77,15 +80,43 @@
           return;
         }
 
+        let newBanner;
+        let isOverlapping;
+        let attempts = 0;
+
+        do {
+          isOverlapping = false;
+          newBanner = {
+            top: Math.random() * 60 + 10 + "vh",
+            left: Math.random() * 60 + 10 + "vw",
+          };
+
+          for (let banner of placedBanners) {
+            let topDiff = Math.abs(
+              parseFloat(newBanner.top) - parseFloat(banner.top)
+            );
+            let leftDiff = Math.abs(
+              parseFloat(newBanner.left) - parseFloat(banner.left)
+            );
+
+            if (topDiff < 15 && leftDiff < 15) {
+              isOverlapping = true;
+              break;
+            }
+          }
+          attempts++;
+        } while (isOverlapping && attempts < 20);
+
         const banner = document.createElement("div");
         banner.className = "banner";
         banner.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-        banner.style.top = Math.random() * 80 + "vh";
-        banner.style.left = Math.random() * 80 + "vw";
+        banner.style.top = newBanner.top;
+        banner.style.left = newBanner.left;
         banner.onclick = function () {
           spawnBanner(banner);
         };
 
+        placedBanners.push(newBanner);
         document.getElementById("banners-container").appendChild(banner);
       }
     </script>
