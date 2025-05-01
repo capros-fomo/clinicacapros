@@ -1,162 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOMO - Coming Soon</title>
+    <title>Clínica FOMO</title>
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: white;
-        text-align: center;
-        overflow: hidden;
-      }
-      #banners-container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-      }
-      .banner {
-        position: absolute;
-        background: red;
-        color: white;
-        padding: 15px;
-        border-radius: 5px;
-        font-size: 1.2em;
-        cursor: pointer;
-        animation: flash 1s infinite alternate;
-        word-wrap: break-word;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-      .banner.wide {
-        width: 300px;
-        height: auto;
-        min-height: 40px;
-        white-space: normal;
-      }
-      .banner.tall {
-        width: 220px;
-        height: auto;
-        min-height: 60px;
-        white-space: normal;
-      }
-      @keyframes flash {
-        0% {
-          opacity: 1;
-        }
-        100% {
-          background: rgb(86, 9, 109);
-          opacity: 0.8;
-        }
-      }
-      #final-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3em;
-        display: none;
-      }
-    </style>
   </head>
   <body>
-    <div id="banners-container">
-      <div class="banner" onclick="spawnBanner(this)">
-        ¡Clica aquí si tienes problemas con el FOMO, te podemos ayudar!
+    <header class="header">
+      <div class="container header__container">
+        <h1 class="logo">Clínica FOMO</h1>
+        <nav>
+          <ul class="nav__list">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sintomas">Síntomas</a></li>
+            <li><a href="#diagnostico">Diagnóstico</a></li>
+            <li><a href="#tratamiento">Tratamiento</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="section inicio">
+        <div class="container">
+          <h2>¿Qué es el FOMO?</h2>
+          <p>
+            FOMO (miedo a perderse algo) es un trastorno común que afecta a
+            personas de todas las edades.
+          </p>
+          <p class="mysterious-date">
+            Próximo inicio de tratamiento:
+            <span id="fecha-misteriosa">15/05/2025</span>
+          </p>
+        </div>
+      </section>
+
+      <section id="sintomas" class="section sintomas">
+        <div class="container">
+          <h2>Síntomas</h2>
+          <ul>
+            <li>Ansiedad por eventos sociales</li>
+            <li>Miedo a tomar decisiones equivocadas</li>
+            <li>Preocupación constante por la actividad de los demás</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="diagnostico" class="section diagnostico">
+        <div class="container">
+          <h2>Diagnóstico</h2>
+          <p>
+            ¿Sufres de FOMO? Realiza nuestra evaluación para obtener un
+            diagnóstico preciso.
+          </p>
+          <button id="btn-evaluacion">Realizar Evaluación</button>
+        </div>
+      </section>
+
+      <section id="tratamiento" class="section tratamiento">
+        <div class="container">
+          <h2>Tratamiento</h2>
+          <p>
+            Ofrecemos terapias innovadoras para ayudarte a dejar el FOMO atrás.
+          </p>
+        </div>
+      </section>
+
+      <section id="testimonios" class="section testimonios">
+        <div class="container">
+          <h2>Testimonios</h2>
+          <blockquote>
+            “Gracias al tratamiento, ya no me siento esclavo del FOMO.”<br />
+            <cite>Laura</cite>
+          </blockquote>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal de diagnóstico -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <h2 id="modal-title">Test de Diagnóstico</h2>
+        <p id="modal-question"></p>
+        <div id="modal-buttons" class="modal-buttons">
+          <button class="modal-btn" data-value="1">1</button>
+          <button class="modal-btn" data-value="2">2</button>
+          <button class="modal-btn" data-value="3">3</button>
+          <button class="modal-btn" data-value="4">4</button>
+          <button class="modal-btn" data-value="5">5</button>
+        </div>
+        <button id="modal-close" class="modal-close hidden">Cerrar</button>
       </div>
     </div>
-    <div id="final-screen">FOMO<br />1.05.2025</div>
-    <script>
-      let clickCount = 0;
-      const phrases = [
-        "¡Tienes FOMO? El Dr. Ramírez te ayuda sin compromiso!",
-        "Aquí te ayudamos con tu FOMO, total discreción!",
-        "El FOMO tiene solución! Aquí te ayudamos!",
-        "No sufras más con el FOMO, somos especialistas!",
-        "Tratamiento efectivo contra el FOMO!",
-        "No dejes que el FOMO controle tu vida, clínicas especializadas!",
-        "¡ALERTA! ¡Tu FOMO está fuera de control!",
-        "¿Obsesionado con lo que te pierdes? Te entendemos...",
-        "¡NO ESPERES MÁS! El tratamiento para el FOMO es ahora o nunca!",
-        "¡Última oportunidad para curar tu FOMO! ¡No te quedes atrás!",
-      ];
 
-      let placedBanners = [];
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025 Clínica FOMO. Todos los derechos reservados.</p>
+        <p>Contacto: info@clinicafomo.com</p>
+      </div>
+    </footer>
 
-      function getRandomPosition(bannerWidth, bannerHeight) {
-        let maxWidth = window.innerWidth - bannerWidth;
-        let maxHeight = window.innerHeight - bannerHeight;
-        let left,
-          top,
-          isOverlapping,
-          attempts = 0;
-
-        do {
-          isOverlapping = false;
-          left = Math.random() * maxWidth;
-          top = Math.random() * maxHeight;
-
-          for (let banner of placedBanners) {
-            let topDiff = Math.abs(top - banner.top);
-            let leftDiff = Math.abs(left - banner.left);
-            if (topDiff < bannerHeight && leftDiff < bannerWidth) {
-              isOverlapping = true;
-              break;
-            }
-          }
-          attempts++;
-        } while (isOverlapping && attempts < 30);
-
-        placedBanners.push({
-          top,
-          left,
-          width: bannerWidth,
-          height: bannerHeight,
-        });
-        return { top, left };
-      }
-
-      function spawnBanner(clickedBanner) {
-        clickCount++;
-        if (clickCount >= 10) {
-          document.getElementById("banners-container").style.display = "none";
-          document.getElementById("final-screen").style.display = "flex";
-          return;
-        }
-
-        const banner = document.createElement("div");
-        banner.className = "banner";
-        banner.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-
-        // Randomly assign a wide or tall banner style
-        if (Math.random() > 0.5) {
-          banner.classList.add("wide");
-        } else {
-          banner.classList.add("tall");
-        }
-
-        document.getElementById("banners-container").appendChild(banner);
-
-        let bannerWidth = banner.offsetWidth || 250;
-        let bannerHeight = banner.offsetHeight || 50;
-        let position = getRandomPosition(bannerWidth, bannerHeight);
-
-        banner.style.top = `${position.top}px`;
-        banner.style.left = `${position.left}px`;
-        banner.onclick = function () {
-          spawnBanner(banner);
-        };
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
