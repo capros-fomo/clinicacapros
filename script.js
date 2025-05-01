@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fechaMisteriosa = document.getElementById('fecha-misteriosa').textContent;
   
     const preguntas = [
-      '¿Con qué frecuencia revisas redes sociales por miedo a perderte algo? (1=nunca, 5=sí, siempre)',
+      '¿Con qué frecuencia revisas redes sociales? (1=nunca, 5=siempre)',
       '¿Te sientes ansioso/a si tus amigos publican planes sin invitarte? (1=poco, 5=mucho)',
       '¿Has dejado de hacer actividades por miedo a perder otras mejores? (1=poco, 5=mucho)',
       '¿Piensas frecuentemente qué hacen los demás mientras tú no estás? (1=poco, 5=mucho)',
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       respuestas = [];
       modal.classList.remove('hidden');
       modalButtonsContainer.style.display = 'flex';
-      modalClose.classList.add('hidden');
       showQuestion();
     });
   
@@ -57,10 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (total <= 16) nivel = 'Nivel moderado de FOMO. Podrías beneficiarte de nuestro tratamiento.';
       else nivel = 'Nivel alto de FOMO. Te recomendamos nuestro tratamiento intensivo.';
   
-      modalQuestion.innerHTML =
-        `<strong>Resultado:</strong> ${nivel}<br><em>Inicio de tratamiento: ${fechaMisteriosa}</em>`;
+    modalQuestion.innerHTML =
+      `<strong>Resultado:</strong> ${nivel}<br><em style="border: 1px solid; padding: 5px; display: inline-block; margin-top: 1rem;">Inicio del tratamiento: ${fechaMisteriosa}</em>`;
       modalButtonsContainer.style.display = 'none';
-      modalClose.classList.remove('hidden');
     }
   });
+
+  function actualizarHeaderHeight() {
+    const h = document.querySelector('.header').offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${h}px`);
+  }
+  
+  // al cargar y al redimensionar
+  window.addEventListener('load', actualizarHeaderHeight);
+  window.addEventListener('resize', actualizarHeaderHeight);  
   

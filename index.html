@@ -2,14 +2,14 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Clínica FOMO</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="header">
       <div class="container header__container">
-        <h1 class="logo">Clínica FOMO</h1>
+        <h1 class="logo">Clínica CAPROS</h1>
         <nav>
           <ul class="nav__list">
             <li><a href="#inicio">Inicio</a></li>
@@ -24,19 +24,33 @@
 
     <main>
       <section id="inicio" class="section inicio">
-        <div class="container">
-          <h2>¿Qué es el FOMO?</h2>
-          <p>
-            FOMO (miedo a perderse algo) es un trastorno común que afecta a
-            personas de todas las edades.
-          </p>
-          <p class="mysterious-date">
-            Próximo inicio de tratamiento:
-            <span id="fecha-misteriosa">15/05/2025</span>
-          </p>
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h2>¿Tienes FOMO?</h2>
+            <p>
+              El FOMO es un trastorno común que afecta a personas de todas las
+              edades.
+            </p>
+            <p class="slogan">
+              No Esperes más.<br />
+              Disfruta de los beneficios de una vida sin FOMO
+            </p>
+            <p class="mysterious-date">
+              Próximo inicio del tratamiento:
+              <span id="fecha-misteriosa">15/05/2025</span>
+            </p>
+          </div>
+          <div class="hero-image">
+            <img
+              src="assets/hero-fomo.png"
+              alt="Doctor sonriente"
+              class="hero-img"
+            />
+          </div>
         </div>
       </section>
 
+      <!-- resto de secciones igual -->
       <section id="sintomas" class="section sintomas">
         <div class="container">
           <h2>Síntomas</h2>
@@ -73,7 +87,7 @@
           <h2>Testimonios</h2>
           <blockquote>
             “Gracias al tratamiento, ya no me siento esclavo del FOMO.”<br />
-            <cite>Laura</cite>
+            <cite>Miguel</cite>
           </blockquote>
         </div>
       </section>
@@ -92,13 +106,13 @@
           <button class="modal-btn" data-value="4">4</button>
           <button class="modal-btn" data-value="5">5</button>
         </div>
-        <button id="modal-close" class="modal-close hidden">Cerrar</button>
+        <button id="modal-close" class="modal-close">Cerrar</button>
       </div>
     </div>
 
     <footer class="footer">
       <div class="container">
-        <p>© 2025 Clínica FOMO. Todos los derechos reservados.</p>
+        <p>© 2025 Clínica CAPROS. Todos los derechos reservados.</p>
         <p>Contacto: info@clinicafomo.com</p>
       </div>
     </footer>
