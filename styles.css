@@ -32,7 +32,14 @@ body {
 }
 
 img {
-  mask-image: linear-gradient(black 90%, transparent);
+  mask-image: linear-gradient(to bottom, black 90%, transparent),
+              linear-gradient(to right, black 90%, transparent),
+              linear-gradient(to left, black 90%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent),
+                      linear-gradient(to right, black 90%, transparent),
+                      linear-gradient(to left, black 90%, transparent);
+  -webkit-mask-composite: intersect;
 }
 
 /* Header */
@@ -81,39 +88,44 @@ img {
 }
 
 
-/* ─────────── HERO CAROUSEL ─────────── */
+/* ─── HERO CAROUSEL ─── */
 .hero-carousel {
   position: relative;
   width: 60%;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;    /* keep arrows from being clipped */
 }
+
+/* NEW parent that actually masks the overflow */
+.carousel-window {
+  overflow: hidden;     /* hides anything sliding outside */
+  width: 100%;
+}
+
 .carousel {
-  display: flex;
+  display: flex;        /* lay out slides side by side */
   transition: transform 0.5s ease-in-out;
+  /* no overflow or width here! */
 }
+
 .carousel-img {
-  
-  width: 80%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  object-fit: cover;
-  min-width: 100%;
-  flex-shrink: 0;
+  flex: 0 0 100%;       /* each image is exactly one “page” wide */
+  max-width: 100%;
   object-fit: cover;
   border-radius: 8px;
 }
+
+/* controls just as before */
 .carousel-controls {
   position: absolute;
   top: 50%;
-  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 .carousel-controls button {
+  pointer-events: all;
+  position: absolute;
   background: rgba(26,61,124,0.7);
   border: none;
   color: #fff;
@@ -121,9 +133,11 @@ img {
   cursor: pointer;
   border-radius: 50%;
   font-size: 1.25rem;
-  line-height: 1;
   transition: background 0.3s;
+  z-index: 2;
 }
+#prev { left: -40px; }
+#next { right: -40px; }
 .carousel-controls button:hover {
   background: rgba(26,61,124,0.9);
 }
