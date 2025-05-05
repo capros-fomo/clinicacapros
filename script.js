@@ -66,6 +66,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const h = document.querySelector('.header').offsetHeight;
     document.documentElement.style.setProperty('--header-height', `${h}px`);
   }
+
+  // ─────────── HERO CAROUSEL ───────────
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelectorAll('.carousel-img');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let current = 0;
+  const count = slides.length;
+  let timer = setInterval(goNext, 5000);
+
+  function update() {
+    carousel.style.transform = `translateX(-${current * 100}%)`;
+  }
+
+  function goNext() {
+    current = (current + 1) % count;
+    update();
+  }
+  function goPrev() {
+    current = (current - 1 + count) % count;
+    update();
+  }
+
+  nextBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    goNext();
+    timer = setInterval(goNext, 5000);
+  });
+  prevBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    goPrev();
+    timer = setInterval(goNext, 5000);
+  });
+
+  // Optional: swipe support on touch devices
+  let startX = null;
+  carousel.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  carousel.addEventListener('touchend', e => {
+    if (startX === null) return;
+    let endX = e.changedTouches[0].clientX;
+    let dx = endX - startX;
+    if (dx > 50) prevBtn.click();
+    else if (dx < -50) nextBtn.click();
+    startX = null;
+  });
+});
+
   
   // al cargar y al redimensionar
   window.addEventListener('load', actualizarHeaderHeight);
