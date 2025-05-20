@@ -3,7 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Clínica FOMO</title>
+    <title>Clínica Capros</title>
+    <link rel="icon" href="/assets/cara.png" type="image/png" />
+
+    <!-- Open Graph para WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:title" content="Clínica CAPROS" />
+    <meta property="og:description" content="Diagnóstico y atención médica contra el FOMO. Descubre Clínica CAPROS." />
+    <meta property="og:image" content="https://clinicacapros.es/assets/logo.jpg" />
+    <meta property="og:url" content="https://clinicacapros.es" />
+    <meta property="og:type" content="website" />
+
+
+    <!-- Twitter Cards (opcional) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Clínica CAPROS" />
+    <meta name="twitter:description" content="Diagnóstico y atención médica contra el FOMO. Descubre Clínica CAPROS." />
+    <meta name="twitter:image" content="https://clinicacapros.es/assets/logo.jpg" />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -24,110 +40,117 @@
 
     <main>
       <section id="inicio" class="section inicio">
-        <div class="container hero-content">
-          <div class="hero-text">
-            <h2>¿Tienes FOMO?</h2>
-            <p>
-              El FOMO es un trastorno común que afecta a personas de todas las
-              edades.
-            </p>
-            <p class="slogan">
-              No Esperes más.<br />
-              Disfruta de los beneficios de una vida sin FOMO
-            </p>
-            <p class="mysterious-date">
-              Próximo inicio del tratamiento:
-              <span id="fecha-misteriosa">11/06/2025</span>
-            </p>
-          </div>
-          <div class="hero-carousel">
-            <!-- NEW: this window masks overflow -->
-            <div class="carousel-window">
-              <div class="carousel">
-                <img
-                  src="assets/doctor1c.jpg"
-                  class="carousel-img"
-                  alt="Doctor 1"
-                />
-                <img
-                  src="assets/doctor2c.jpg"
-                  class="carousel-img"
-                  alt="Doctor 2"
-                />
-                <img
-                  src="assets/doctor3c.jpg"
-                  class="carousel-img"
-                  alt="Doctor 3"
-                />
-                <img
-                  src="assets/doctor4c.jpg"
-                  class="carousel-img"
-                  alt="Doctor 4"
-                />
-              </div>
-            </div>
-            <div class="carousel-controls">
-              <button id="prev" aria-label="Anterior">‹</button>
-              <button id="next" aria-label="Siguiente">›</button>
-            </div>
+      <div class="container hero-content">
+        <div class="hero-text">
+        <h2>¿Tienes FOMO?</h2>
+        <p>
+          El FOMO es un trastorno común que afecta a personas de todas las
+          edades.
+        </p>
+        <p class="slogan">
+          No esperes más.<br />
+          Disfruta de los beneficios de una vida sin FOMO.
+        </p>
+        <p class="mysterious-date">
+          Próximo inicio del tratamiento:
+          <span id="fecha-misteriosa">11/06/2025</span>
+        </p>
+        </div>
+        <div class="hero-carousel">
+        <!-- NEW: esta ventana enmascara el desbordamiento -->
+        <div class="carousel-window">
+          <div class="carousel">
+          <img
+            src="assets/doctor1c.jpg"
+            class="carousel-img"
+            alt="Doctor 1"
+          />
+          <img
+            src="assets/doctor2c.jpg"
+            class="carousel-img"
+            alt="Doctor 2"
+          />
+          <img
+            src="assets/doctor3c.jpg"
+            class="carousel-img"
+            alt="Doctor 3"
+          />
+          <img
+            src="assets/doctor4c.jpg"
+            class="carousel-img"
+            alt="Doctor 4"
+          />
           </div>
         </div>
+        <div class="carousel-controls">
+          <button id="prev" aria-label="Anterior">‹</button>
+          <button id="next" aria-label="Siguiente">›</button>
+        </div>
+        </div>
+      </div>
       </section>
 
       <!-- resto de secciones igual -->
       <section id="sintomas" class="section sintomas">
-        <div class="container sintomas__container">
-          <div class="sintomas__image">
-            <img src="assets/simptoms.jpg" alt="Síntomas del FOMO" />
-          </div>
-          <div class="sintomas__content">
-            <h2>Síntomas</h2>
-            <ul>
-              <li>Ansiedad por perderte eventos sociales</li>
-              <li>Miedo a tomar decisiones equivocadas</li>
-              <li>Preocupación constante por la actividad de los demás</li>
-            </ul>
-          </div>
+      <div class="container sintomas__container">
+        <div class="sintomas__image">
+        <img src="assets/simptoms.jpg" alt="Síntomas del FOMO" />
         </div>
+        <div class="sintomas__content">
+        <h2>Síntomas</h2>
+        <ul>
+          <li>Ansiedad por perderte eventos sociales.</li>
+          <li>Miedo a tomar decisiones equivocadas.</li>
+          <li>Preocupación constante por la actividad de los demás.</li>
+        </ul>
+        </div>
+      </div>
       </section>
 
       <section id="diagnostico" class="section diagnostico">
-        <div class="container diagnostico__container">
-          <div class="diagnostico__content">
-            <h2>Diagnóstico</h2>
-            <p>
-              ¿Sufres de FOMO? Realiza nuestra evaluación para obtener un
-              diagnóstico preciso.
-            </p>
-            <button id="btn-evaluacion">Realizar Evaluación</button>
-          </div>
-          <div class="diagnostico__image">
-            <img src="assets/diagnose.jpg" alt="Diagnóstico del FOMO" />
-          </div>
+      <div class="container diagnostico__container">
+        <div class="diagnostico__content">
+        <h2>Diagnóstico</h2>
+        <p>
+          ¿Sufres de FOMO? Realiza nuestra evaluación para obtener un
+          diagnóstico preciso.
+        </p>
+        <button id="btn-evaluacion">Realizar evaluación</button>
         </div>
+        <div class="diagnostico__image">
+        <img src="assets/diagnose.jpg" alt="Diagnóstico del FOMO" />
+        </div>
+      </div>
       </section>
 
       <section id="tratamiento" class="section tratamiento">
-        <div class="container">
-          <h2>Tratamiento</h2>
-          <p>
-            Ofrecemos terapias innovadoras para ayudarte a dejar el FOMO atrás.
-          </p>
-        </div>
+      <div class="container">
+        <h2>Tratamiento</h2>
+        <p>
+        Ofrecemos terapias innovadoras para ayudarte a dejar el FOMO atrás.
+        </p>
+      </div>
       </section>
 
       <section id="testimonios" class="section testimonios">
-        <div class="container">
+      <div class="container">
           <h2>Testimonios</h2>
           <blockquote>
-            “Gracias al tratamiento de la Clínica Capros, ya no me siento
-            esclavo del FOMO.”<br />
+            “Gracias al tratamiento de la Clínica Capros, ya no me paso todo el
+            día con FOMO.”<br />
             <cite>Miguel</cite>
           </blockquote>
+          <blockquote>
+            “Llevo media vida con FOMO pero el tratamiento de Clínica Capros me hará superarlo.”<br />
+            <cite>Lucas</cite>
+          </blockquote>
+          <blockquote>
+            “Cuando me muera será por el FOMO y cuando reviva padeceré FOMO... es la realidad. Pero en Clínica Capros me están ayudando a salir de esta.”<br />
+            <cite>Alex</cite>
         </div>
       </section>
     </main>
-
+    
     <!-- Modal de diagnóstico -->
     <div id="modal" class="modal hidden">
       <div class="modal-overlay"></div>
